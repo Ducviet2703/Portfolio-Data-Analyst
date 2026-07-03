@@ -225,7 +225,7 @@ WITH total_revenue AS (
     FROM retails.sales s
     INNER JOIN retails.products p
         ON s.product_key = p.product_key
-    WHERE YEAR(s.order_date) = 2023 -- YTD 2023
+    WHERE s.order_date >= DATEADD(MONTH, -12, (SELECT MAX(order_date) FROM retails.sales)) -- 12 thang gan nhat: du lieu ket thuc 02/2021 nen YTD 2023 se rong
     GROUP BY s.store_key
 ), revenue_acreage AS (
     SELECT
