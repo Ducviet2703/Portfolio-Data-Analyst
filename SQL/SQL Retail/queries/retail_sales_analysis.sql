@@ -217,7 +217,7 @@ GROUP BY cs.year_start_buy, cs.total_customer
 ORDER BY cs.year_start_buy
 
 GO
--- Em tính giúp chị doanh thu trên mỗi mét vuông của từng store (YTD 2023) để so sánh hiệu quả sử dụng diện tích. Sau đó xếp hạng 4 nhóm (quartile) trong cùng quốc gia — store nào top 25%, store nào bottom 25%. Xuất: store_key, country, doanh thu/m², quartile trong nước.
+-- Em tính giúp chị doanh thu trên mỗi mét vuông của từng store để so sánh hiệu quả sử dụng diện tích. Sau đó xếp hạng 4 nhóm (quartile) trong cùng quốc gia — store nào top 25%, store nào bottom 25%. Xuất: store_key, country, doanh thu/m², quartile trong nước.
 WITH total_revenue AS ( 
     SELECT 
         s.store_key
@@ -225,7 +225,7 @@ WITH total_revenue AS (
     FROM retails.sales s
     INNER JOIN retails.products p
         ON s.product_key = p.product_key
-    WHERE s.order_date >= DATEADD(MONTH, -12, (SELECT MAX(order_date) FROM retails.sales)) -- 12 thang gan nhat: du lieu ket thuc 02/2021 nen YTD 2023 se rong
+    WHERE s.order_date >= DATEADD(MONTH, -12, (SELECT MAX(order_date) FROM retails.sales))
     GROUP BY s.store_key
 ), revenue_acreage AS (
     SELECT
