@@ -146,10 +146,15 @@ All queries live in (queries/retail_sales_analysis.ipynb).
 ## Repository Structure
 
 ```
-├── dataset/                        # Sample data (markdown previews) + query results
+├── dataset/
+│   ├── retails.customers.md # Sample data
+│   ├── retails.products.md
+│   ├── retails.sales.md
+│   ├── retails.stores.md
 ├── queries/
-│   ├── retail_sales_analysis.ipynb # 14 business questions + T-SQL answers
-│   └── explore_tables.sql          # Quick data exploration script
+│   ├── retail_sales_analysis.ipynb # 14 business questions 
+│   └── retail_sales_analysis.sql          # 14 business questions 
 └── README.md
+└── Result_retail_analysis.pdf
 ```
 
